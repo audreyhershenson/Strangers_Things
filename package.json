@@ -9,7 +9,7 @@
     "start": "react-scripts start",
     "build": "NODE_ENV=production npm run compile-env && react-scripts build"
   },
-  "author": "Audrey Hershenson, Ray Mulvey",
+  "author": "Audrey Hershenson, Anna Mantula",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",

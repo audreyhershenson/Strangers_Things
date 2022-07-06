@@ -1,5 +1,6 @@
-import React from 'react';;
+import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 
 import {
     BrowserRouter,
@@ -10,4 +11,9 @@ import {
 import {App} from './components';
 
 const root = ReactDOM.createRoot(document.getElementById('App'))
-root.render(<App />);
+root.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+);
+
