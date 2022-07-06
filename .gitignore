@@ -1,0 +1,8 @@
+node_modules/
+buid/
+.DS_Store
+.vscode
+.idea
+.env
+.eslintcache
+src/secrets.js
