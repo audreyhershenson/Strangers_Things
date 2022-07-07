@@ -12,3 +12,27 @@ export async function getAllPosts() {
       console.error;
     }
 }
+
+
+// export async function RegisterUser() {
+//   try {
+//     const response = await fetch(`${BASE}/users/register`);
+//     const data = await response.json();
+//     return data;
+//   } 
+//   catch (error) {
+//     console.error;
+//   }
+// }
+
+// export async function Login() {
+//   try {
+//     const response = await fetch(`${BASE}/users/login`);
+//     const data = await response.json();
+//     return data;
+//   } 
+//   catch (error) {
+//     console.error;
+//   }
+// }
+
