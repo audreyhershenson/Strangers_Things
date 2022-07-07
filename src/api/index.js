@@ -34,7 +34,9 @@ export async function registerUser(username, password) {
         }})
     })
     console.log(response, "response from user")
-    return console.log(response)
+    const result = await response.json()
+  console.log (result)
+    return result
   // try {
   //   const response = await fetch(`${BASE}/users/register`);
   //   const data = await response.json();
