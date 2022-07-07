@@ -5,29 +5,46 @@ import {
     clearCurrentUser
 } from '../auth';
 
+import {
+    registerUser
+} from '../api';
+//move to index
+
+const [username, setUsername] = useState('');
+const [password, setPassword] = useState('');
+
+
 const Header = ({
+    
     currentUser,
-    setCurrentUser,
-    userList
+    setCurrentUser
 }) => {
+    
+    //move to login
+    async function handleSubmit(event) {
+        event.preventDefault()
+        console.log('this is your event', event)
+        const backFromAPI = await registerUser(username, password)
+        backFromAPI ? console.log('Success') : console.log('User already exists')  
+    }
     return (
         <header>
             <h1>Strangers' Things</h1>
-            <form  id = "register" >
+            <form  id = "register" onSubmit = {handleSubmit}>
                 <div className="nameEntry">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username"  defaultValue = "User name" required />
+                    <label>Username:</label>
+                    <input type="text" id="inputUsername" name="username" required />
                 </div>
                 <div className="passwordEntry">
-                    <label for="password">Password:</label>
-                    <input type="text" id="password" name="password" defaultValue = "Password" required />
+                    <label>Password:</label>
+                    <input type="text" id="inputPassword" name="password" required />
                 </div>
                 <div className="passwordConfirm">
-                    <label for="passwordC">Confirm password:</label>
-                    <input type="text" id="passwordC" name="passwordC" defaultValue = "Confirm password" required />
+                    <label>Confirm password:</label>
+                    <input type="text" id="inputPasswordC" name="passwordC" required />
                 </div>
-                <button id = "registerButton">Register</button>
-                <button id = "loginButton">Login</button>
+                <button type="submit" id = "registerButton">Register</button>
+                <button type="submit" id = "loginButton">Login</button>
             </form>
 
         </header>

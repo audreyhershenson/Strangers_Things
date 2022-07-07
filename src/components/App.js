@@ -6,6 +6,7 @@ import { Header } from './'
 export const App = () => {
 
     const [posts, setPosts] = useState([])
+
     useEffect(() => {
         getAllPosts().then(
             (response) => { setPosts(response.data.posts) }
