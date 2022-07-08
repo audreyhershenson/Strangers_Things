@@ -25,6 +25,8 @@ const [password, setPassword] = useState('');
         console.log('this is your event', event)
         const backFromAPI = await registerUser(username, password)
         console.log(backFromAPI)
+        setPassword('')
+        setUsername('')
         localStorage.setItem('token', backFromAPI)
         // const token = localStorage.getItem("token");
         // backFromAPI ? console.log('Success') : console.log('User already exists') 
@@ -38,11 +40,13 @@ const [password, setPassword] = useState('');
         localStorage.setItem('token', backFromAPI)
         // backFromAPI ? console.log('Success') : console.log('User already exists') 
         console.log(backFromAPI) 
+        setPassword('')
+        setUsername('')
     }
     return (
         <header>
             <form id = "register" onSubmit = {handleRegister}>
-                <div className="nameEntry">
+                <div className="nameEntryReg">
                     <label>Username:</label>
                     <input type="text" id="inputUsernameReg" name="username"  
                     value = {username}
@@ -50,7 +54,7 @@ const [password, setPassword] = useState('');
                     console.log(username);}}
                     required />
                 </div>
-                <div className="passwordEntry">
+                <div className="passwordEntryReg">
                     <label>Password:</label>
                     <input type="text" id="inputPasswordReg" name="password" 
                     value = {password}
@@ -58,7 +62,7 @@ const [password, setPassword] = useState('');
                     console.log(password);}}    
                     required />
                 </div>
-                <div className="passwordConfirm">
+                <div className="passwordConfirmReg">
                     <label>Confirm password:</label>
                     <input type="text" id="inputPasswordCReg" name="passwordC" required />
                 </div>
