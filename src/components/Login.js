@@ -1,15 +1,13 @@
 import React, { useState} from 'react';
 import Header from './Header'
 import {Link, Routes, Route} from 'react-router-dom'
+import {loginUser} from '../api';
 
 function Login(props) {
 
     const {username, password, setUsername, setPassword} = props;
 
 async function handleLogin(event) {
-
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
 
     // const [username, setUsername] = useState('');
     // const [password, setPassword] = useState('');
