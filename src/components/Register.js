@@ -1,9 +1,11 @@
 import React, { useState} from 'react';
-import Header from './Header'
+import Header from './Header';
+import {Link, Routes, Route} from 'react-router-dom'
 
 function Register(props) {
+    
 
-const {username, password} = props;
+const {username, password, setUsername, setPassword} = props;
 
 async function handleRegister(event) {
     // const [username, setUsername] = useState('');
