@@ -1,0 +1,19 @@
+.posts {
+     padding: 5px;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+}
+.indivpost {
+    width: 20%;
+    border: 1px black solid;
+    margin: 5px;
+    padding: 5px;
+}
+
+header {
+    background-color: rgb(216, 216, 216);
+    border: 1px black solid;
+    padding: 5px;
+    text-align: right;
+}
