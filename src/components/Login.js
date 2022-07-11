@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import Header from './Header'
+import userPage from './userPage'
 import {Link, Routes, Route} from 'react-router-dom'
 import {loginUser} from '../api';
 
@@ -22,6 +23,7 @@ async function handleLogin(event) {
     console.log(backFromAPI) 
     setPassword('')
     setUsername('')
+    userPage()
 }
 
 return (<form id = "login" onSubmit = {handleLogin}>
