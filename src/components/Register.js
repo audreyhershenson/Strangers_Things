@@ -5,14 +5,13 @@ import {registerUser} from '../api';
 
 function Register(props) {
     
-
-const {username, password} = props;
-
-// , setUsername, setPassword
-
-async function handleRegister(event) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+// const {username, password,setUsername, setPassword} = props;
+
+
+async function handleRegister(event) {
+  
         
     event.preventDefault()
     console.log('this is your event', event)

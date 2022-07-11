@@ -5,12 +5,14 @@ import {loginUser} from '../api';
 
 function Login(props) {
 
-    const {username, password, setUsername, setPassword} = props;
+    
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+ 
 
 async function handleLogin(event) {
 
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
+   
     
     event.preventDefault()
     console.log('this is your event', event)

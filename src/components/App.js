@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { getAllPosts } from '../api/index.js'
-import { Header } from './'
+import { Header} from './'
 import {Link, Routes, Route} from 'react-router-dom'
 
 
 export const App = () => {
+
+    
 
     const [posts, setPosts] = useState([])
 
@@ -24,6 +26,7 @@ export const App = () => {
                     )):
                     null
             }</div>
+            
 
         </div>
 
