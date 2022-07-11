@@ -22,16 +22,6 @@ const Header = ({
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 
-if (getUser.authToken !== undefined)
-{
-    function showRegister() {}  
-    function showLogin() {}
-}
-else
-{
-
-}
-
 return (
     <header>
            <Routes>
@@ -39,8 +29,10 @@ return (
                  <Route path='login' element={<Login />}></Route>
              </Routes>
               <div className = "link-container">
+                 const logSwitch = localStorage.getItem(token) ? <Link to={'/logout'} className='nav-item'>Logout</Link> :
                  <Link to={'/login'} className='nav-item'>Login</Link>
                  <Link to={'/register'} className='nav-item'>Register</Link>
+
                  {/* <button type="submit" id="showRegister" onSubmit={showRegister}>Register</button>
                  <button type="submit" id='showLogin' onSubmit={showLogin}>Log in</button>
 

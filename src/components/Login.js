@@ -16,14 +16,13 @@ async function handleLogin(event) {
    
     
     event.preventDefault()
-    console.log('this is your event', event)
     const backFromAPI = await loginUser(username, password)
     localStorage.setItem('token', backFromAPI)
     // backFromAPI ? console.log('Success') : console.log('User already exists') 
     console.log(backFromAPI) 
     setPassword('')
     setUsername('')
-    userPage()
+    // userPage()
 }
 
 return (<form id = "login" onSubmit = {handleLogin}>

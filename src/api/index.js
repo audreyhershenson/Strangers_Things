@@ -42,8 +42,6 @@ export async function registerUser(username, password) {
 
 }
   export async function loginUser(username, password) {
-    console.log("Lets get the event inputs", event.target);
-    console.log(`${BASE_URL}${COHORT_NAME}/users/login`);
   
     try {
       const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/login`, {
@@ -59,7 +57,6 @@ export async function registerUser(username, password) {
         }),
       });
       const result = await response.json();
-      console.log(result, "result")
       const token = result.data.token;
       console.log(token);
       return token;
@@ -76,6 +73,8 @@ export async function registerUser(username, password) {
       },
     }); 
     const result = await response.json();
+    const data = result.data;
+    return data;
     return result;
     }catch (error) {
       console.error(error);
