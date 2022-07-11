@@ -9,12 +9,12 @@ import {
 
 import {
     registerUser,
-    loginUser
+    loginUser,
+    getUser
 } from '../api';
 //move to index
 
 const Header = ({
-    
     currentUser,
     setCurrentUser
 }) => {
@@ -22,8 +22,16 @@ const Header = ({
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 
-function showRegister() {}  
-function showLogin() {}
+if (getUser.authToken !== undefined)
+{
+    function showRegister() {}  
+    function showLogin() {}
+}
+else
+{
+
+}
+
 return (
     <header>
            <Routes>

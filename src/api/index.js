@@ -68,6 +68,21 @@ export async function registerUser(username, password) {
     }
   }
 
+  export async function getUser(authToken) {
+    try {
+      const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`, {headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}` 
+      },
+    }); 
+    const result = await response.json();
+    return result;
+    }catch (error) {
+      console.error(error);
+    }
+  }
+
+
 
   // try {
   //   const response = await fetch(`${BASE}/users/register`);
