@@ -9,8 +9,7 @@ async function userPage () {
     localStorage.getItem('token', toProfile);
     toProfile ? console.log('Success') : console.log('Not logged in');
     getUser();
-
-    return (data)
+    return (<div>User Page</div>)
 }
 
 

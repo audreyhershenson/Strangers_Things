@@ -26,12 +26,7 @@ export const App = () => {
                     )):
                     null
             }</div>
-            
-
         </div>
-
-
-        
     )
 }
 

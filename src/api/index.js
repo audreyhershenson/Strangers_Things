@@ -75,11 +75,12 @@ export async function registerUser(username, password) {
     const result = await response.json();
     const data = result.data;
     return data;
-    return result;
     }catch (error) {
       console.error(error);
     }
   }
+
+  
 
 
 
