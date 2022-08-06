@@ -1,56 +1,53 @@
+//import resoruces///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from "react-router-dom"
 import { Register, Login, Logout } from "./"
 
-import {
-    storeCurrentUser,
-    clearCurrentUser
-} from '../auth';
-
-import {
-    registerUser,
-    loginUser,
-    getUser
-} from '../api';
-//move to index
+//create component///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 const Header = ({
     loggedIn,
     setCurrentUser
 }) => {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    console.log(localStorage.getItem('token'))
-    
-    localStorage.getItem(!'token');
-    ?
-    console.log("logged out");
-    
-    return (
-    <div id="header">
-       
+    const token = localStorage.getItem("token");
+    console.log(token)
 
-            <>
-                <header>
-                    <Routes>
-                        <Route path='/Register' element={<Register />}></Route>
-                        <Route path='/Login' element={<Login />}></Route>
-                    </Routes>
-                    <NavLink to='/Login'>Log In </NavLink>
-                    <NavLink to='/Register'>Register</NavLink>
-                    
-                </header>      
-            </>
-            :
-            <>
-                <header>
-                    <Logout />
-                </header>
-            </>
-    </div>)
+//return header//////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+    return (
+        <div id="header">
+            <div>
+                Stranger's Things
+            </div>
+            {loggedIn ? (
+                <>
+                    <header>
+                        <Logout />
+
+                    </header>
+                </>
+            ) : (
+                <>
+                    <header>
+                        <Routes>
+                            <Route path='/Login' element={<Login />}></Route>
+                            <Route path='/Register' element={<Register />}></Route>
+                        </Routes>
+                        <NavLink to='/Login'>Log In </NavLink>
+                        <NavLink to='/Register'>Register</NavLink>
+                    </header>
+                </>
+            )}
+        </div>)
 
 };
 
+//export resoruces///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 export default Header;

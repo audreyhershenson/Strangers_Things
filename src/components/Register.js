@@ -10,19 +10,18 @@ function Register(props) {
 // const {username, password,setUsername, setPassword} = props;
 
 
+
 async function handleRegister(event) {
   
         
     event.preventDefault()
     console.log('this is your event', event)
-    const backFromAPI = await registerUser(username, password)
-    console.log(backFromAPI)
+    const confirmedRegister = await registerUser(username, password)
     setPassword('')
     setUsername('')
-    localStorage.setItem('token', backFromAPI)
+    localStorage.setItem('token', confirmedRegister)
     // const token = localStorage.getItem("token");
-    // backFromAPI ? console.log('Success') : console.log('User already exists') 
-    console.log(backFromAPI)
+    // confirmedRegister ? console.log('Success') : console.log('User already exists') 
 }
 
 return (<form id="register" onSubmit={handleRegister}>

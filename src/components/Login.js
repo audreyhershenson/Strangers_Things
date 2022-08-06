@@ -1,6 +1,12 @@
+//import resoruces///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
 import React, { useState } from 'react';
 import { loginUser } from '../api';
 import { Logout } from './'
+
+//create component///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 const Login = ({
     username,
@@ -10,11 +16,7 @@ const Login = ({
     loggedIn,
 }) => {
 
-
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    localStorage.setItem('token', backFromAPI);
+    localStorage.setItem('token', confirmedRegister);
 
     async function handleLogin(event) {
         event.preventDefault();
@@ -30,10 +32,13 @@ const Login = ({
         }
     }
 
+    //return login component/////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////
+
     return (
         <div>
             <div>Log in now!</div>
-            {!localStorage.getItem('token') ? <><form id="login" onSubmit={handleLogin}>
+            <form id="login" onSubmit={handleLogin}>
 
                 <div className="nameEntry">
                     <label>Username:
@@ -66,8 +71,10 @@ const Login = ({
                 </div>
                 <button id="loginButton" type="submit">Login</button>
             </form>
-            </> : <Logout />}
         </div>);
 };
+
+//export resoruces///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 export default Login;
