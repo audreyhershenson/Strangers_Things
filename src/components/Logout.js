@@ -1,11 +1,15 @@
-function Logout() {
-    
-    function handleLogout(event) {
-        console.log("logging out...");
-        localStorage.removeItem('token');
-        location.reload()
-    }
-    return (<button onClick = {handleLogout}>Logout</button>)
-}
+// //create component///////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////
 
-export default Logout;
+// const Logout = ({ loggedIn }) => {
+//     function handleLogin(event) {
+//         loggedIn(false);
+//       localStorage.removeItem("token");
+//       localStorage.removeItem("username");
+//     };
+// }
+
+// //export resoruces///////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////
+
+// export default Logout;

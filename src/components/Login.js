@@ -1,9 +1,10 @@
 //import resoruces///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
-import React, { useState } from 'react';
+import React from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
 import { loginUser } from '../api';
-import { Logout } from './'
+
 
 //create component///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
@@ -13,19 +14,22 @@ const Login = ({
     password,
     setUsername,
     setPassword,
-    loggedIn,
 }) => {
-
-    localStorage.setItem('token', confirmedRegister);
+    const navigate = useNavigate();
+    const token = localStorage.getItem("token");
 
     async function handleLogin(event) {
         event.preventDefault();
         try {
-            const confirmedLoggedIn = await loginUser(username, password);
+            const loggedInUsername= event.target[0].value
+            const confirmedLoggedIn = await (username, password);
+            navigate("/Post");
             if (confirmedLoggedIn) {
-                loggedIn(true);
-                setUsername('');
-                setPassword('');
+                console.log("logged in")
+                localStorage.setItem("token", confirmedLoggedIn)
+                localStorage.setItem("username", loggedInUsername)
+                setLoggedIn(true);
+                setUsername(loggedInUsername)
             }
         } catch (error) {
             console.error;
@@ -37,9 +41,8 @@ const Login = ({
 
     return (
         <div>
-            <div>Log in now!</div>
             <form id="login" onSubmit={handleLogin}>
-
+            <div>Log in to Stranger's Things</div>
                 <div className="nameEntry">
                     <label>Username:
                         <input
@@ -49,8 +52,8 @@ const Login = ({
                             type="text"
                             value={username}
                             onChange={(event) => {
+
                                 setUsername(event.target.value);
-                                console.log("username: ", username)
                             }} required
                         />
                     </label>
@@ -61,7 +64,7 @@ const Login = ({
                             className="input"
                             placeholder="Enter password here..."
                             name="password"
-                            type="text"
+                            type="password"
                             value={password}
                             onChange={(event) => {
                                 setPassword(event.target.value);

@@ -3,42 +3,46 @@
 
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, NavLink } from "react-router-dom"
-import { Register, Login, Logout } from "./"
+import { Register, Login, Post } from "./"
+import "./style.css";
 
 //create component///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
-const Header = ({
-    loggedIn,
-    setCurrentUser
-}) => {
+const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
+
+    function handleLogOut() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("username");
+    };
+
 
     const token = localStorage.getItem("token");
-    console.log(token)
 
-//return header//////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
+    //return header//////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////
 
     return (
         <div id="header">
-            <div>
-                Stranger's Things
-            </div>
-            {loggedIn ? (
+
+            {(token) ? (
                 <>
                     <header>
-                        <Logout />
-
+                        <div>
+                            Stranger's Things
+                        </div>
+                        <button onClick={handleLogOut}>
+                            Logout
+                        </button>
                     </header>
                 </>
             ) : (
                 <>
                     <header>
-                        <Routes>
-                            <Route path='/Login' element={<Login />}></Route>
-                            <Route path='/Register' element={<Register />}></Route>
-                        </Routes>
-                        <NavLink to='/Login'>Log In </NavLink>
+                        <div>
+                            Stranger's Things
+                        </div>
+                        <NavLink to='/Login'>Log in </NavLink>
                         <NavLink to='/Register'>Register</NavLink>
                     </header>
                 </>

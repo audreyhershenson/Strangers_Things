@@ -3,8 +3,9 @@
 
 import React, { useEffect, useState } from 'react';
 import { getAllPosts } from '../api/index.js';
-import { Header, Login, Register, Logout, Post } from './';
+import { Header, Login, Register, Post } from './';
 import { Link, Routes, Route } from 'react-router-dom';
+import "./style.css";
 
 //create app/////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
@@ -26,27 +27,22 @@ const App = () => {
     getAllPosts().then(
         (response) => { setPosts(response.data.posts) }
     )
-    console.log(posts)
+
 
     //return app/////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////
 
     return (
         <div>
-            <Header loggedIn={loggedIn} />
-            <Routes>
-                <Route path='/login' element={
-                    <Login
-                        setLoggedIn={setLoggedIn}
-                        loggedIn={loggedIn}
-                        username={username}
-                        password={password}
-                        setUsername={setUsername}
-                        setPassword={setPassword}
-                    />}>
-                </Route>
-                <Route path='/Register' element={<Register />}></Route>
-            </Routes>
+            <Header username={username} setUsername={setUsername} password={password} setPassword={setPassword} />
+            <div className="routeBox">
+                <Routes>
+                <Route path="/" element={null} />
+                    <Route path='/Login' element={<Login username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}></Route>
+                    <Route path='/Register' element={<Register username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}></Route>
+                    <Route path="/Post" element={<Post token={token}/>} />
+                </Routes>
+            </div>
             <div className="posts">{
                 posts && (posts.length > 0) ?
                     posts.map(({ _id, title, updatedAt, description, location, price, willDeliver, author }) => (

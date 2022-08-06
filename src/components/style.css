@@ -11,8 +11,17 @@
     padding: 5px;
 }
 
-header {
+header, .routeBox {
+    margin: 5px;
     background-color: rgb(216, 216, 216);
+    border: 1px black solid;
+    padding: 5px;
+    text-align: right;
+}
+
+.postBox {
+    margin: 5px;
+    background-color: rgb(150, 150, 150);
     border: 1px black solid;
     padding: 5px;
     text-align: right;

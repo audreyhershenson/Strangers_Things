@@ -15,9 +15,6 @@ export async function getAllPosts() {
 }
 
 export async function registerUser(username, password) {
-  console.log("Lets get the event inputs", event.target);
-  console.log(`${BASE_URL}${COHORT_NAME}/users/register`);
-
   try {
     const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/register`, {
       method: "POST",
@@ -25,62 +22,64 @@ export async function registerUser(username, password) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user: {
           username: username,
           password: password,
-        },
       }),
     });
     const result = await response.json();
-    console.log(result, "result")
-    const token = result.data.token;
-    console.log(token);
-    return token;
-  } catch (error) {
-    console.error(error);
-  }
+    const token = result.token;
 
-}
-  export async function loginUser(username, password) {
-  
-    try {
-      const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: {
-            username: username,
-            password: password,
-          },
-        }),
-      });
-      const result = await response.json();
-      const token = result.data.token;
-      console.log(token);
-      return token;
-    } catch (error) {
-      console.error(error);
+    if (token) {
+      localStorage.setItem("username", username);
+      localStorage.setItem("token", token);
+      return result;
     }
   }
+  catch (error) {
+    console.error
+  }
+}
+export async function loginUser(event) {
 
-  export async function getUser(authToken) {
-    try {
-      const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`, {headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}` 
+  try {
+    const myUsername = event.target[0].value;
+    const myPassword = event.target[1].value;
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    }); 
+      body: JSON.stringify({
+          username: myUsername,
+          password: myPassword,
+      }),
+    });
+    const result = await response.json();
+    const token = result.data.token
+    return token;
+  }
+  catch (error) {
+    console.error
+  }
+}
+
+export async function getUser(authToken) {
+  try {
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      },
+    });
     const result = await response.json();
     const data = result.data;
     return data;
-    }catch (error) {
-      console.error(error);
-    }
+  } catch (error) {
+    console.error(error);
   }
+}
 
-  
+
 
 
 

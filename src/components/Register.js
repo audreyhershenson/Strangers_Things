@@ -1,56 +1,81 @@
-import React, { useState} from 'react';
-import Header from './Header';
-import {Link, Routes, Route} from 'react-router-dom'
-import {registerUser} from '../api';
+//import resoruces///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
-function Register(props) {
-    
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-// const {username, password,setUsername, setPassword} = props;
+import React from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
 
+//create component///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
+const Register = ({
+    username,
+    password,
+    setUsername,
+    setPassword,
+    loggedIn,
+}) => {
+    const navigate = useNavigate();
+    const token = localStorage.getItem("token");
 
-async function handleRegister(event) {
-  
-        
-    event.preventDefault()
-    console.log('this is your event', event)
-    const confirmedRegister = await registerUser(username, password)
-    setPassword('')
-    setUsername('')
-    localStorage.setItem('token', confirmedRegister)
-    // const token = localStorage.getItem("token");
-    // confirmedRegister ? console.log('Success') : console.log('User already exists') 
-}
+    async function handleRegister(event) {
+        event.preventDefault();
+        try {
+            const registeredUsername= event.target[0].value
+            const confirmedRegister = await (username, password);
+            navigate("/Post");
+            if (confirmedRegister) {
+                localStorage.setItem("token", confirmedRegister)
+                localStorage.setItem("username", registeredUsername)
+                loggedIn(true);
+                setLoggedIn(true);
+                setUsername(loggedInUsername)
+            }
+        } catch (error) {
+            console.error;
+        }
+    }
+    //return login component/////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////
 
-return (<form id="register" onSubmit={handleRegister}>
-    <div className="nameEntryReg">
-        <label>Username:</label>
-        <input type="text" id="inputUsernameReg" name="username"
-            value={username}
-            onChange={(event) => {
-                setUsername(event.target.value)
-                console.log(username);
-            }}
-            required />
-    </div>
-    <div className="passwordEntryReg">
-        <label>Password:</label>
-        <input type="text" id="inputPasswordReg" name="password"
-            value={password}
-            onChange={(event) => {
-                setPassword(event.target.value)
-                console.log(password);
-            }}
-            required />
-    </div>
-    <div className="passwordConfirmReg">
-        <label>Confirm password:</label>
-        <input type="text" id="inputPasswordCReg" name="passwordC" required />
-    </div>
-    <button type="submit" id="registerButton">Register</button>
-</form>
-)}
+    return (
+        <div>
+            <div>Register for Stranger's Things</div>
+            <form id="register" onSubmit={handleRegister}>
+
+                <div className="nameEntry">
+                    <label>Username:
+                        <input
+                            className="input"
+                            placeholder="Enter username here..."
+                            name="username"
+                            type="text"
+                            value={username}
+                            onChange={(event) => {
+                                setUsername(event.target.value);
+                            }} required
+                        />
+                    </label>
+                </div>
+                <div className="passwordEntry">
+                    <label>Password:
+                        <input
+                            className="input"
+                            placeholder="Enter password here..."
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={(event) => {
+                                setPassword(event.target.value);
+                            }} required
+                        />
+                    </label>
+                </div>
+                <button id="registerButton" type="submit">Register</button>
+            </form>
+        </div>);
+};
+
+//export resoruces///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 
 export default Register;

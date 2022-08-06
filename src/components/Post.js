@@ -1,43 +1,68 @@
+//import resoruces///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
 import React, { useState, useEffect } from "react";
 import { Link, Routes, Route } from 'react-router-dom'
+import "./style.css";
 
-const Post = ({ loggedIn }) => {
+//create component///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+const Post = ({
+    username,
+    password,
+    token
+}) => {
+
+    const [postTitle, setPostTitle] = useState("");
+    const [postBody, setPostBody] = useState("");
+    const [postPrice, setPostPrice] = useState("");
+    const [postLocation, setPostLocation] = useState("");
+
+    //return post component//////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////
+
     return (
         <div>
-            { loggedIn ? (<div>
-                <form>
-                    <label>Title:</label>
-                    <input type="text" id="inputTitle" name="title"
-                    value={title}
+            <form id="post">
+                <label>Title:</label>
+                <input
+                    name="title"
+                    type="text"
+                    value={postTitle}
                     onChange={(event) => {
-                        setTitle(event.target.value)
+                        setPostTitle(event.target.value)
                     }}
                     required />
-                    <label>Body:</label>
-                    <input type="text" id="inputDescription" name="description"
-                    value={description}
+                <label>Body:</label>
+                <input
+                    name="description"
+                    type="text"
+                    value={postBody}
                     onChange={(event) => {
-                        setBody(event.target.value)
+                        setPostBody(event.target.value)
                     }}
                     required />
-                    <label>Price:</label>
-                    <input type="text" id="inputPrice" name="price"
-                    value={price}
+                <label>Price:</label>
+                <input
+                    name="price"
+                    type="text"
+                    value={postPrice}
                     onChange={(event) => {
-                        setBody(event.target.value)
+                        setPostPrice(event.target.value)
                     }}
                     required />
-                    <label>Location:</label>
-                    <input type="text" id="inputLocation" name="location"
-                    value={location}
+                <label>Location:</label>
+                <input
+                    name="location"
+                    type="text"
+                    value={postLocation}
                     default={"On request"}
                     onChange={(event) => {
-                        setBody(event.target.value)
+                        setPostLocation(event.target.value)
                     }} />
-                </form>
-                <button type="submit">Post</button>
-                </div>) : (<div></div>) }
-        </div>
-
-    )
+            </form>
+            <button type="submit">Post</button>
+        </div>);
 }
+export default Post;
