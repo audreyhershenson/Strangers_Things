@@ -5,15 +5,19 @@ import {Link, Routes, Route} from 'react-router-dom'
 
 
 export const App = () => {
-
-    
-
     const [posts, setPosts] = useState([])
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [userToken, setToken] = useState("")
 
     useEffect(() => {
+        const token = localStorage.getItem("token");
         getAllPosts().then(
             (response) => { setPosts(response.data.posts) }
         )
+        if (token) {
+            setToken(token); 
+            setLoggedIn(true);
+        }
     }, [])
     console.log(posts)
     return (
