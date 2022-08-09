@@ -29,7 +29,7 @@ export async function registerUser(username, password) {
     const result = await response.json();
     const token = result.token;
 
-    if (token) {
+    if (result) {
       localStorage.setItem("username", username);
       localStorage.setItem("token", token);
       return result;
@@ -79,7 +79,6 @@ export async function getUser(authToken) {
 export async function createPost(postTitle, postBody, postPrice, postLocation) {
   try {
     const authToken = localStorage.getItem("token")
-    console.log("attempting to create post...")
     const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`, {
       headers: {
         'Content-Type': 'application/json',

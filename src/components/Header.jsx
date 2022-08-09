@@ -11,22 +11,21 @@ import "./style.css";
 
 const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
 
+    const token = localStorage.getItem("token");
+    console.log(token)
+
     function handleLogOut() {
         localStorage.removeItem("token");
         localStorage.removeItem("username");
         loggedIn = false;
     };
 
-
-    const token = localStorage.getItem("token");
-
     //return header//////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////
 
     return (
         <div id="header">
-
-            {(loggedIn) ? (
+            {(token) ? (
                 <>
                     <header>
                         <div>

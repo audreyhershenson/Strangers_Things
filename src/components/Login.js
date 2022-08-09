@@ -14,6 +14,7 @@ const Login = ({
     password,
     setUsername,
     setPassword,
+    loggedIn
 }) => {
     
     const navigate = useNavigate();
@@ -27,10 +28,11 @@ const Login = ({
             navigate("/Post");
             if (result) {
                 console.log("logged in")
-                localStorage.setItem("token", result.token)
-                localStorage.setItem("username", loggedInUsername)
+                console.log("token:", token)
+                localStorage.setItem("username", username)
+                localStorage.setItem("token", result.data.token)
                 setLoggedIn(true);
-                setUsername(loggedInUsername)
+                setUsername(username)
             }
         } catch (error) {
             console.error;
