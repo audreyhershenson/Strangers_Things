@@ -15,18 +15,19 @@ const Login = ({
     setUsername,
     setPassword,
 }) => {
+    
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
     async function handleLogin(event) {
         event.preventDefault();
         try {
-            const loggedInUsername= event.target[0].value
-            const confirmedLoggedIn = await (username, password);
+            const result = await loginUser(username, password);
+            console.log(result) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             navigate("/Post");
-            if (confirmedLoggedIn) {
+            if (result) {
                 console.log("logged in")
-                localStorage.setItem("token", confirmedLoggedIn)
+                localStorage.setItem("token", result.token)
                 localStorage.setItem("username", loggedInUsername)
                 setLoggedIn(true);
                 setUsername(loggedInUsername)
@@ -42,7 +43,7 @@ const Login = ({
     return (
         <div>
             <form id="login" onSubmit={handleLogin}>
-            <div>Log in to Stranger's Things</div>
+                <div>Log in to Stranger's Things</div>
                 <div className="nameEntry">
                     <label>Username:
                         <input
@@ -52,7 +53,6 @@ const Login = ({
                             type="text"
                             value={username}
                             onChange={(event) => {
-
                                 setUsername(event.target.value);
                             }} required
                         />

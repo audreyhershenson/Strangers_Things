@@ -2,7 +2,8 @@
 /////////////////////////////////////////////////////////////////////
 
 import React, { useState, useEffect } from "react";
-import { Link, Routes, Route } from 'react-router-dom'
+import { NavLink, useNavigate } from "react-router-dom";
+import { createPost } from '../api';
 import "./style.css";
 
 //create component///////////////////////////////////////////////////
@@ -14,17 +15,29 @@ const Post = ({
     token
 }) => {
 
+    const navigate = useNavigate();
+
     const [postTitle, setPostTitle] = useState("");
     const [postBody, setPostBody] = useState("");
     const [postPrice, setPostPrice] = useState("");
     const [postLocation, setPostLocation] = useState("");
+
+    async function handlePost(event) {
+        event.preventDefault();
+        try {
+            await createPost(postTitle, postBody, postPrice, postLocation);
+            navigate("/");
+        } catch {
+            console.error;
+        }
+    }
 
     //return post component//////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////
 
     return (
         <div>
-            <form id="post">
+            <form onSubmit={handlePost}>
                 <label>Title:</label>
                 <input
                     name="title"
@@ -61,8 +74,12 @@ const Post = ({
                     onChange={(event) => {
                         setPostLocation(event.target.value)
                     }} />
+                <button type="submit">Post</button>
             </form>
-            <button type="submit">Post</button>
         </div>);
 }
+
+//export resoruces///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
 export default Post;

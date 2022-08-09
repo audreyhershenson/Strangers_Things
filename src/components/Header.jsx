@@ -14,6 +14,7 @@ const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
     function handleLogOut() {
         localStorage.removeItem("token");
         localStorage.removeItem("username");
+        loggedIn = false;
     };
 
 
@@ -25,12 +26,13 @@ const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
     return (
         <div id="header">
 
-            {(token) ? (
+            {(loggedIn) ? (
                 <>
                     <header>
                         <div>
                             Stranger's Things
                         </div>
+                        <NavLink to='/Post'>Create a post</NavLink>
                         <button onClick={handleLogOut}>
                             Logout
                         </button>

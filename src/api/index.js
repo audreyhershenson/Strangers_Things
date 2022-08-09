@@ -22,8 +22,8 @@ export async function registerUser(username, password) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-          username: username,
-          password: password,
+        username: username,
+        password: password,
       }),
     });
     const result = await response.json();
@@ -39,24 +39,22 @@ export async function registerUser(username, password) {
     console.error
   }
 }
-export async function loginUser(event) {
-
+export async function loginUser(username, password) {
   try {
-    const myUsername = event.target[0].value;
-    const myPassword = event.target[1].value;
     const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-          username: myUsername,
-          password: myPassword,
+        user: {
+          username: username,
+          password: password
+        }
       }),
     });
     const result = await response.json();
-    const token = result.data.token
-    return token;
+    return result;
   }
   catch (error) {
     console.error
@@ -78,7 +76,30 @@ export async function getUser(authToken) {
     console.error(error);
   }
 }
-
+export async function createPost(postTitle, postBody, postPrice, postLocation) {
+  try {
+    const authToken = localStorage.getItem("token")
+    console.log("attempting to create post...")
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`
+      },
+      method: "POST",
+      body: JSON.stringify({
+        postTitle: postTitle,
+        postBody: postBody,
+        postPrice: postPrice,
+        postLocation: postLocation
+      }),
+    });
+    const result = await response.json();
+    console.log("post created!", result)
+    return result;
+  } catch (error) {
+    console.error
+  }
+}
 
 
 

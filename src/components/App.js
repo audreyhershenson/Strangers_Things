@@ -24,9 +24,12 @@ const App = () => {
         }
     }, [])
 
-    getAllPosts().then(
-        (response) => { setPosts(response.data.posts) }
-    )
+    useEffect(() => {
+        
+        getAllPosts().then(
+            (response) => { setPosts(response.data.posts) }
+        )
+    }, [])
 
 
     //return app/////////////////////////////////////////////////////////
@@ -40,7 +43,7 @@ const App = () => {
                 <Route path="/" element={null} />
                     <Route path='/Login' element={<Login username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}></Route>
                     <Route path='/Register' element={<Register username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}></Route>
-                    <Route path="/Post" element={<Post token={token}/>} />
+                    <Route path="/Post" element={<Post token={token}/>}></Route>
                 </Routes>
             </div>
             <div className="posts">{
