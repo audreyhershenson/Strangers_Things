@@ -16,16 +16,17 @@ const Post = ({
 }) => {
 
     const navigate = useNavigate();
+    const authToken = localStorage.getItem("token");
 
-    const [postTitle, setPostTitle] = useState("");
-    const [postBody, setPostBody] = useState("");
-    const [postPrice, setPostPrice] = useState("");
-    const [postLocation, setPostLocation] = useState("");
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState("");
+    const [location, setLocation] = useState("");
 
     async function handlePost(event) {
         event.preventDefault();
         try {
-            await createPost(postTitle, postBody, postPrice, postLocation);
+            await createPost(setTitle, setDescription, setPrice, setLocation, authToken);
             navigate("/");
         } catch {
             console.error;
@@ -42,37 +43,37 @@ const Post = ({
                 <input
                     name="title"
                     type="text"
-                    value={postTitle}
+                    value={title}
                     onChange={(event) => {
-                        setPostTitle(event.target.value)
+                        setTitle(event.target.value)
                     }}
                     required />
                 <label>Body:</label>
                 <input
                     name="description"
                     type="text"
-                    value={postBody}
+                    value={description}
                     onChange={(event) => {
-                        setPostBody(event.target.value)
+                        setDescription(event.target.value)
                     }}
                     required />
                 <label>Price:</label>
                 <input
                     name="price"
                     type="text"
-                    value={postPrice}
+                    value={price}
                     onChange={(event) => {
-                        setPostPrice(event.target.value)
+                        setPrice(event.target.value)
                     }}
                     required />
                 <label>Location:</label>
                 <input
                     name="location"
                     type="text"
-                    value={postLocation}
+                    value={location}
                     default={"On request"}
                     onChange={(event) => {
-                        setPostLocation(event.target.value)
+                        setLocation(event.target.value)
                     }} />
                 <button type="submit">Post</button>
             </form>

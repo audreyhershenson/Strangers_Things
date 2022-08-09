@@ -14,7 +14,6 @@ const Login = ({
     password,
     setUsername,
     setPassword,
-    loggedIn
 }) => {
     
     const navigate = useNavigate();
@@ -24,11 +23,8 @@ const Login = ({
         event.preventDefault();
         try {
             const result = await loginUser(username, password);
-            console.log(result) //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             navigate("/Post");
             if (result) {
-                console.log("logged in")
-                console.log("token:", token)
                 localStorage.setItem("username", username)
                 localStorage.setItem("token", result.data.token)
                 setLoggedIn(true);

@@ -2,7 +2,7 @@
 /////////////////////////////////////////////////////////////////////
 
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, NavLink } from "react-router-dom"
+import { Routes, Route, NavLink, useNavigate } from "react-router-dom"
 import { Register, Login, Post } from "./"
 import "./style.css";
 
@@ -11,13 +11,14 @@ import "./style.css";
 
 const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
 
+    const navigate = useNavigate();
     const token = localStorage.getItem("token");
-    console.log(token)
 
     function handleLogOut() {
         localStorage.removeItem("token");
         localStorage.removeItem("username");
         loggedIn = false;
+        navigate("/");
     };
 
     //return header//////////////////////////////////////////////////////

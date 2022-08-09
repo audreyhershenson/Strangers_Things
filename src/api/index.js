@@ -4,6 +4,29 @@ const BASE = "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-A";
 const BASE_URL = "https://strangers-things.herokuapp.com/api/";
 const COHORT_NAME = "2206-FTB-ET-WEB-FT";
 
+export async function createPost(title, description, price, location, authToken) {
+  try {
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`
+      },
+      method: "POST",
+      body: JSON.stringify({
+        title: title,
+        description: description,
+        price: price,
+        location: location
+      }),
+    });
+    const result = await response.json();
+    console.log("post created!", result)
+    return result;
+  } catch (error) {
+    console.error
+  }
+}
+
 export async function getAllPosts() {
   try {
     const response = await fetch(`${BASE}/posts`);
@@ -22,23 +45,21 @@ export async function registerUser(username, password) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username,
-        password: password,
+        user: {
+          username: username,
+          password: password
+        }
       }),
     });
     const result = await response.json();
-    const token = result.token;
-
-    if (result) {
-      localStorage.setItem("username", username);
-      localStorage.setItem("token", token);
-      return result;
-    }
+    return result;
   }
   catch (error) {
     console.error
   }
 }
+
+
 export async function loginUser(username, password) {
   try {
     const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/login`, {
@@ -76,29 +97,7 @@ export async function getUser(authToken) {
     console.error(error);
   }
 }
-export async function createPost(postTitle, postBody, postPrice, postLocation) {
-  try {
-    const authToken = localStorage.getItem("token")
-    const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`
-      },
-      method: "POST",
-      body: JSON.stringify({
-        postTitle: postTitle,
-        postBody: postBody,
-        postPrice: postPrice,
-        postLocation: postLocation
-      }),
-    });
-    const result = await response.json();
-    console.log("post created!", result)
-    return result;
-  } catch (error) {
-    console.error
-  }
-}
+
 
 
 

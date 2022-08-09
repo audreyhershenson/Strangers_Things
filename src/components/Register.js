@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
+import { registerUser } from '../api';
 
 //create component///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
@@ -20,16 +21,24 @@ const Register = ({
     async function handleRegister(event) {
         event.preventDefault();
         try {
-            const registeredUsername= event.target[0].value
-            const confirmedRegister = await (username, password);
-            navigate("/Post");
-            if (confirmedRegister) {
-                localStorage.setItem("token", confirmedRegister)
-                localStorage.setItem("username", registeredUsername)
-                loggedIn(true);
+            const result = await registerUser(username, password);
+            navigate("/Post")
+            if (result) {
+                localStorage.setItem("username", username)
+                localStorage.setItem("token", result.data.token)
                 setLoggedIn(true);
-                setUsername(loggedInUsername)
+                setUsername(username)
             }
+            // const registeredUsername= event.target[0].value
+            // const confirmedRegister = await (username, password);
+            // navigate("/Post");
+            // if (confirmedRegister) {
+            //     localStorage.setItem("token", confirmedRegister)
+            //     localStorage.setItem("username", registeredUsername)
+            //     loggedIn(true);
+            //     setLoggedIn(true);
+            //     setUsername(loggedInUsername)
+            // }
         } catch (error) {
             console.error;
         }
