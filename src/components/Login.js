@@ -70,6 +70,7 @@ const Login = ({
                         />
                     </label>
                 </div>
+                <br></br>
                 <button id="loginButton" type="submit">Login</button>
             </form>
         </div>);

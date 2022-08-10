@@ -11,18 +11,51 @@
     padding: 5px;
 }
 
-header, .routeBox {
+header {
     margin: 5px;
     background-color: rgb(216, 216, 216);
     border: 1px black solid;
     padding: 5px;
     text-align: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+.routeBox {
+    margin: 5px;
+    background-color: rgb(216, 216, 216);
+    border: 1px black solid;
+    padding: 5px;
+    text-align: right;
+    display: flex;
+    justify-content: center;
 }
 
 .postBox {
     margin: 5px;
-    background-color: rgb(150, 150, 150);
-    border: 1px black solid;
     padding: 5px;
-    text-align: right;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+
+}
+
+.center {
+    margin: 5px;
+    padding: 5px;
+    display:flex;
+    justify-content: center;
+}
+
+.centerTitle {
+    font-size: 30px;
+    margin: 5px;
+    padding: 5px;
+    display:flex;
+    justify-content: center;
+}
+
+.divTitle {
+    font-size: 30px;
 }

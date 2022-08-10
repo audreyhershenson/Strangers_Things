@@ -79,6 +79,7 @@ const Register = ({
                         />
                     </label>
                 </div>
+                <br></br>
                 <button id="registerButton" type="submit">Register</button>
             </form>
         </div>);

@@ -29,23 +29,26 @@ const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
             {(token) ? (
                 <>
                     <header>
-                        <div>
-                            Stranger's Things
+                        <div className="divTitle">
+                            Strangers' Things
                         </div>
-                        <NavLink to='/Post'>Create a post</NavLink>
+                        <br></br>
+                        <div><NavLink to='/Post'>Create a post</NavLink>
+                        <br></br>
                         <button onClick={handleLogOut}>
                             Logout
-                        </button>
+                        </button></div>
                     </header>
                 </>
             ) : (
                 <>
                     <header>
-                        <div>
-                            Stranger's Things
-                        </div>
-                        <NavLink to='/Login'>Log in </NavLink>
-                        <NavLink to='/Register'>Register</NavLink>
+                    <div className="divTitle">
+                            Strangers' Things
+                        </div><br></br>
+                        <div><NavLink to='/Login'>Log in </NavLink>
+                        <br></br>
+                        <NavLink to='/Register'>Register</NavLink></div>
                     </header>
                 </>
             )}

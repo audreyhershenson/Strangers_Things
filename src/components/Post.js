@@ -16,7 +16,6 @@ const Post = ({
 }) => {
 
     const navigate = useNavigate();
-    const authToken = localStorage.getItem("token");
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -26,8 +25,15 @@ const Post = ({
     async function handlePost(event) {
         event.preventDefault();
         try {
-            await createPost(setTitle, setDescription, setPrice, setLocation, authToken);
-            navigate("/");
+            const post = {
+                title: title,
+                description: description,
+                price: price,
+                location: location
+            }
+            // await createPost(setTitle, setDescription, setPrice, setLocation, authToken);
+            const authToken = localStorage.getItem("token");
+            const response = await createPost(post, authToken)
         } catch {
             console.error;
         }
@@ -38,44 +44,59 @@ const Post = ({
 
     return (
         <div>
-            <form onSubmit={handlePost}>
-                <label>Title:</label>
-                <input
-                    name="title"
-                    type="text"
-                    value={title}
-                    onChange={(event) => {
-                        setTitle(event.target.value)
-                    }}
-                    required />
-                <label>Body:</label>
-                <input
-                    name="description"
-                    type="text"
-                    value={description}
-                    onChange={(event) => {
-                        setDescription(event.target.value)
-                    }}
-                    required />
-                <label>Price:</label>
-                <input
-                    name="price"
-                    type="text"
-                    value={price}
-                    onChange={(event) => {
-                        setPrice(event.target.value)
-                    }}
-                    required />
-                <label>Location:</label>
-                <input
-                    name="location"
-                    type="text"
-                    value={location}
-                    default={"On request"}
-                    onChange={(event) => {
-                        setLocation(event.target.value)
-                    }} />
-                <button type="submit">Post</button>
+            <form onSubmit={handlePost} className="postForm">
+                <div className="postBox">
+                    <div className="centerTitle">
+                        Create a post
+                    </div>
+                    <br></br>
+                    <label>Title:</label><br></br>
+                    <input
+                        name="title"
+                        type="text"
+                        size={50}
+                        defaultValue={title}
+                        onChange={(event) => {
+                            setTitle(event.target.value)
+                        }}
+                        required />
+                    <br></br>
+                    <label>Body:</label><br></br>
+                    <input className="postBodyInput"
+                        name="description"
+                        type="text"
+                        size={50}
+                        defaultValue={description}
+                        onChange={(event) => {
+                            setDescription(event.target.value)
+                        }}
+                        required />
+                    <br></br>
+                    <label>Price:</label><br></br>
+                    <input
+                        name="price"
+                        type="text"
+                        size={50}
+                        defaultValue={price}
+                        onChange={(event) => {
+                            setPrice(event.target.value)
+                        }
+                        }
+                        required />
+                    <br></br>
+                    <label>Location:</label><br></br>
+                    <input
+                        name="location"
+                        type="text"
+                        size={50}
+                        defaultValue={location}
+                        default={"On request"}
+                        onChange={(event) => {
+                            setLocation(event.target.value)
+                        }} />
+                    <br></br><br></br>
+                    <div className="center"><button type="submit">Post</button></div>
+                </div>
             </form>
         </div>);
 }

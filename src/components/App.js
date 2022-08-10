@@ -25,9 +25,11 @@ const App = () => {
     }, [])
 
     useEffect(() => {
-        
+
         getAllPosts().then(
-            (response) => { setPosts(response.data.posts) }
+            
+            (response) => { console.log(response);
+                setPosts(response.data.posts) }
         )
     }, [])
 
@@ -40,16 +42,24 @@ const App = () => {
             <Header username={username} setUsername={setUsername} password={password} setPassword={setPassword} />
             <div className="routeBox">
                 <Routes>
-                <Route path="/" element={null} />
+                    <Route path="/" element={null} />
                     <Route path='/Login' element={<Login username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}></Route>
                     <Route path='/Register' element={<Register username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}></Route>
-                    <Route path="/Post" element={<Post token={token}/>}></Route>
+                    <Route path="/Post" element={<Post token={token} />}></Route>
                 </Routes>
             </div>
             <div className="posts">{
                 posts && (posts.length > 0) ?
                     posts.map(({ _id, title, updatedAt, description, location, price, willDeliver, author }) => (
-                        <div className="indivpost" key={_id}> <h2>{title}</h2> <p>{updatedAt}</p><p>{description}</p><p>{location}</p><p>{price}</p> <p>{willDeliver}</p> <p>{author.username}</p></div>
+                        <div className="indivpost" key={_id}>
+                            <h2>{title}</h2>
+                            <p>{updatedAt}</p>
+                            <p>{description}</p>
+                            <p>{location}</p>
+                            <p>{price}</p>
+                            <p>{willDeliver}</p>
+                            <p>{author.username}</p>
+                        </div>
                     )) :
                     null
             }</div>

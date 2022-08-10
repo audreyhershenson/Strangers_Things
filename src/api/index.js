@@ -4,7 +4,7 @@ const BASE = "https://strangers-things.herokuapp.com/api/2206-FTB-ET-WEB-FT-A";
 const BASE_URL = "https://strangers-things.herokuapp.com/api/";
 const COHORT_NAME = "2206-FTB-ET-WEB-FT";
 
-export async function createPost(title, description, price, location, authToken) {
+export async function createPost(post, authToken) {
   try {
     const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`, {
       headers: {
@@ -13,14 +13,10 @@ export async function createPost(title, description, price, location, authToken)
       },
       method: "POST",
       body: JSON.stringify({
-        title: title,
-        description: description,
-        price: price,
-        location: location
+        post
       }),
     });
     const result = await response.json();
-    console.log("post created!", result)
     return result;
   } catch (error) {
     console.error
@@ -29,13 +25,33 @@ export async function createPost(title, description, price, location, authToken)
 
 export async function getAllPosts() {
   try {
-    const response = await fetch(`${BASE}/posts`);
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`);
     const data = await response.json();
     return data;
   } catch (error) {
     console.error;
   }
 }
+
+// export async function updatePost(post, authToken) {
+//   try {
+//     const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts/POST_ID`, {
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${authToken}`,
+//       },
+//       body: JSON.stringify({
+//         post
+//       }),
+//     });
+//     const result = await response.json();
+//     console.log("result:", result)
+//     return result;
+//   } catch (error) {
+//     console.error
+//   }
+// }
 
 export async function registerUser(username, password) {
   try {
@@ -97,50 +113,3 @@ export async function getUser(authToken) {
     console.error(error);
   }
 }
-
-
-
-
-
-  // try {
-  //   const response = await fetch(`${BASE}/users/register`);
-  //   const data = await response.json();
-  //   return data;
-  // }
-  // catch (error) {
-  //   console.error;
-  // }
-
-
-// export async function loginUser(username, password) {
-//   console.log('Lets get the event inputs', event.target)
-//   console.log(`${BASE_URL}${COHORT_NAME}/users/login`)
-//   const response = await
-//     fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/users/login', {
-//       method: "POST",
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         user: {
-//           username: username,
-//           password: password
-//         }
-//       })
-//     }).then(response => response.json())
-//       .then(result => {
-//         console.log(result);
-//       })
-//       .catch(console.error);
-//   //console.log(response, "response from user")
-//   const result = await response.json()
-//   return result
-//   // try {
-//   //   const response = await fetch(`${BASE}/users/register`);
-//   //   const data = await response.json();
-//   //   return data;
-//   // }
-//   // catch (error) {
-//   //   console.error;
-//   // }
-// }
