@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { getAllPosts } from '../api/index.js';
-import { Header, Login, Register, Post } from './';
+import { Header, Login, Register, Post, User } from './';
 import { Link, Routes, Route } from 'react-router-dom';
 import "./style.css";
 
@@ -44,7 +44,7 @@ const App = () => {
                 setPosts(response.data.posts) }
         )
     }, [])
-
+console.log("posts:", posts)
 
     //return app/////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////
@@ -58,6 +58,7 @@ const App = () => {
                     <Route path='/Login' element={<Login username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}></Route>
                     <Route path='/Register' element={<Register username={username} setUsername={setUsername} password={password} setPassword={setPassword} />}></Route>
                     <Route path="/Post" element={<Post token={token} />}></Route>
+                    <Route path="/User" element={<User />}></Route>
                 </Routes>
             </div>
             <div className="posts">{
