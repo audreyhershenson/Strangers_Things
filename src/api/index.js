@@ -25,7 +25,11 @@ export async function createPost(post, authToken) {
 
 export async function getAllPosts() {
   try {
-    const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`);
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {

@@ -14,9 +14,21 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
+    // const [searchTerm, setSearchTerm] = useState([]);
+
+    // // function postMatches(post, text) {
+    // //     (post.includes(searchTerm) || (text.includes(searchTerm))) ? 
+    // //     return true;
+    // //     :
+    // //     return false;
+    // // }
+
+    // const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
+    // const postsToDisplay = searchTerm.length ? filteredPosts : posts;
 
     const token = localStorage.getItem("token");
+
 
     useEffect(() => {
         if (token) {
@@ -59,6 +71,11 @@ const App = () => {
                             <p>{price}</p>
                             <p>{willDeliver}</p>
                             <p>{author.username}</p>
+                            
+                            {
+                                (loggedIn && author.username==username) ?  <p>hello!</p> : <p>goodbye!</p>
+                            }
+
                         </div>
                     )) :
                     null
