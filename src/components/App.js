@@ -40,11 +40,10 @@ const App = () => {
 
         getAllPosts().then(
             
-            (response) => { console.log(response);
+            (response) => {
                 setPosts(response.data.posts) }
         )
     }, [])
-console.log("posts:", posts)
 
     //return app/////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////

@@ -111,7 +111,8 @@ export async function getUser(authToken) {
       },
     });
     const result = await response.json();
-    return result;
+    const userResult = result.data;
+    return userResult;
   } catch (error) {
     console.error(error);
   }
