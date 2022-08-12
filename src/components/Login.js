@@ -23,6 +23,7 @@ const Login = ({
         event.preventDefault();
         try {
             const result = await loginUser(username, password);
+            navigate("/Post")
             if (result) {
                 localStorage.setItem("username", username)
                 localStorage.setItem("token", result.data.token)

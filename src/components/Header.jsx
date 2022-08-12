@@ -35,6 +35,7 @@ const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
                         <br></br>
                         <div><NavLink to='/Post'>Create a post</NavLink>
                         <br></br>
+                        <div><NavLink to="/Posts">See all posts</NavLink></div>
                         <div><NavLink to="/User">My Profile</NavLink></div>
                         <br></br>
                         <button onClick={handleLogOut}>

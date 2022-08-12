@@ -23,15 +23,48 @@ export async function createPost(post, authToken) {
   }
 }
 
-export async function getAllPosts() {
+export async function getAllPosts(authToken) {
   try {
     const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts`, {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`
       },
     });
     const data = await response.json();
     return data;
+  } catch (error) {
+    console.error;
+  }
+}
+
+export async function getMyPosts(authToken) {
+  try {
+    console.log(authToken, "<-AuthToken")
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/me`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error;
+  }
+}
+
+export async function deletePost(_id, authToken) {
+  try {
+    const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`
+      },
+    });
+    const result = await response.json();
+    return result; 
   } catch (error) {
     console.error;
   }

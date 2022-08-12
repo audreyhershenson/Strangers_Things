@@ -28,7 +28,7 @@ const PostsPage = () => {
     return (
         <div className="posts">{
             posts && (posts.length > 0) ?
-                posts.map(({ _id, title, updatedAt, description, location, price, willDeliver, author }) => (
+                posts.map(({ _id, title, updatedAt, description, location, price, willDeliver, author, active, message }) => (
                     <div className="indivpost" key={_id}>
                         <h2>{title}</h2>
                         <p>{updatedAt}</p>
@@ -37,6 +37,8 @@ const PostsPage = () => {
                         <p>{price}</p>
                         <p>{willDeliver}</p>
                         <p>{author.username}</p>
+                        <p>{active}</p>
+                        <p>{message}</p>
 
                     </div>
                 )) :

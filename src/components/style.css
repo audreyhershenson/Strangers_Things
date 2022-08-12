@@ -3,12 +3,14 @@
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
+     text-align: left;
 }
 .indivpost {
-    width: 20%;
+    width: 300px;
     border: 1px black solid;
     margin: 5px;
     padding: 5px;
+    background-color: rgb(238, 238, 238);
 }
 
 header {
@@ -19,6 +21,11 @@ header {
     text-align: right;
     display: flex;
     justify-content: space-between;
+}
+
+.box {
+    border: 1px black solid;
+    padding: 5px;
 }
 
 .routeBox {
@@ -39,6 +46,11 @@ header {
     text-align: left;
     justify-content: center;
 
+}
+
+.vertical {
+    display:block;
+    text-align: center;
 }
 
 .center {
