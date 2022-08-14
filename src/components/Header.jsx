@@ -1,15 +1,14 @@
 //import resoruces///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, NavLink, useNavigate } from "react-router-dom"
-import { Register, Login, Post } from "./"
+import React from 'react';
+import { NavLink, useNavigate } from "react-router-dom"
 import "./style.css";
 
 //create component///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
-const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
+const Header = ({ loggedIn }) => {
 
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
@@ -34,24 +33,24 @@ const Header = ({ loggedIn, username, setUsername, password, setPassword }) => {
                         </div>
                         <br></br>
                         <div><NavLink to='/Post'>Create a post</NavLink>
-                        <br></br>
-                        <div><NavLink to="/Posts">See all posts</NavLink></div>
-                        <div><NavLink to="/User">My Profile</NavLink></div>
-                        <br></br>
-                        <button onClick={handleLogOut}>
-                            Logout
-                        </button></div>
+                            <br></br>
+                            <div><NavLink to="/Posts">See all posts</NavLink></div>
+                            <div><NavLink to="/User">My Profile</NavLink></div>
+                            <br></br>
+                            <button onClick={handleLogOut}>
+                                Logout
+                            </button></div>
                     </header>
                 </>
             ) : (
                 <>
                     <header>
-                    <div className="divTitle">
+                        <div className="divTitle">
                             Strangers' Things
                         </div><br></br>
                         <div><NavLink to='/Login'>Log in </NavLink>
-                        <br></br>
-                        <NavLink to='/Register'>Register</NavLink></div>
+                            <br></br>
+                            <NavLink to='/Register'>Register</NavLink></div>
                     </header>
                 </>
             )}

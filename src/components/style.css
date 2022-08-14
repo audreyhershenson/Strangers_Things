@@ -1,10 +1,11 @@
 .posts {
-     padding: 5px;
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     text-align: left;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
 }
+
 .indivpost {
     width: 300px;
     border: 1px black solid;
@@ -41,7 +42,7 @@ header {
 .postBox {
     margin: 5px;
     padding: 5px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     text-align: left;
     justify-content: center;
@@ -49,14 +50,14 @@ header {
 }
 
 .vertical {
-    display:block;
+    display: block;
     text-align: center;
 }
 
 .center {
     margin: 5px;
     padding: 5px;
-    display:flex;
+    display: flex;
     justify-content: center;
 }
 
@@ -64,7 +65,7 @@ header {
     font-size: 30px;
     margin: 5px;
     padding: 5px;
-    display:flex;
+    display: flex;
     justify-content: center;
 }
 

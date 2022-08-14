@@ -29,16 +29,6 @@ const Register = ({
                 setLoggedIn(true);
                 setUsername(username)
             }
-            // const registeredUsername= event.target[0].value
-            // const confirmedRegister = await (username, password);
-            // navigate("/Post");
-            // if (confirmedRegister) {
-            //     localStorage.setItem("token", confirmedRegister)
-            //     localStorage.setItem("username", registeredUsername)
-            //     loggedIn(true);
-            //     setLoggedIn(true);
-            //     setUsername(loggedInUsername)
-            // }
         } catch (error) {
             console.error;
         }

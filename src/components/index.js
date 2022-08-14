@@ -6,4 +6,4 @@ export {default as Register} from './Register';
 export {default as Post} from './Post';
 export {default as PostsPage} from './Posts';
 export {default as User} from './User';
-// export {default as Search} from './Search'
+export {default as DeletePost} from './DeletePost';

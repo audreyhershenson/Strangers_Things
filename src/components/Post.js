@@ -9,11 +9,7 @@ import "./style.css";
 //create component///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
-const Post = ({
-    username,
-    password,
-    token
-}) => {
+const Post = ({}) => {
 
     const navigate = useNavigate();
 
@@ -34,6 +30,7 @@ const Post = ({
             // await createPost(setTitle, setDescription, setPrice, setLocation, authToken);
             const authToken = localStorage.getItem("token");
             const response = await createPost(post, authToken)
+            navigate("/User")
         } catch {
             console.error;
         }

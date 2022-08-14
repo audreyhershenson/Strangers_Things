@@ -2,7 +2,6 @@
 /////////////////////////////////////////////////////////////////////
 
 import React, { useEffect, useState } from 'react';
-import { getAllPosts } from '../api/index.js';
 import { Home, Header, Login, Register, Post, PostsPage, User } from './';
 import { Link, Routes, Route } from 'react-router-dom';
 import "./style.css";
