@@ -35,13 +35,11 @@ const User = () => {
     }, [])
 
     console.log("user.messages", user.messages)
-    // const allMessages = user.messages.map(({message}) => (<div>{message.content}</div>))
     return (
         <div className="vertical">
             <div className="divTitle">{user.username}'s profile</div>
             <br></br>
             <div>Your Messages</div>
-            {/* <div>{user.messages}</div> */}
             {/* <div>{user.messages.map((message) => {return <div className="box"><div>{message.content}</div><div>from: {message.fromUser.username}</div></div>})}</div> */}
             <br></br>
             <div>Your Posts</div>

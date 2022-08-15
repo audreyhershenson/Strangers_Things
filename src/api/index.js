@@ -70,26 +70,6 @@ export async function deletePost(_id, authToken) {
   }
 }
 
-// export async function updatePost(post, authToken) {
-//   try {
-//     const response = await fetch(`${BASE_URL}${COHORT_NAME}/posts/POST_ID`, {
-//       method: "PATCH",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//       body: JSON.stringify({
-//         post
-//       }),
-//     });
-//     const result = await response.json();
-//     console.log("result:", result)
-//     return result;
-//   } catch (error) {
-//     console.error
-//   }
-// }
-
 export async function registerUser(username, password) {
   try {
     const response = await fetch(`${BASE_URL}${COHORT_NAME}/users/register`, {

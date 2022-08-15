@@ -3,8 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, Header, Login, Register, Post, PostsPage, User } from './';
-import { Link, Routes, Route } from 'react-router-dom';
-import "./style.css";
+import { Routes, Route } from 'react-router-dom';
 
 //create app/////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
@@ -13,7 +12,7 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [posts, setPosts] = useState([]);
+
 
 
     const token = localStorage.getItem("token");

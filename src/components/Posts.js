@@ -4,7 +4,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllPosts } from '../api/index.js';
 import { Posts } from './index.js';
-import "./style.css";
 
 //create component///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////

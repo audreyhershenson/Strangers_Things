@@ -1,10 +1,9 @@
 //import resoruces///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 
-import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createPost } from '../api';
-import "./style.css";
 
 //create component///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
@@ -27,7 +26,6 @@ const Post = ({}) => {
                 price: price,
                 location: location
             }
-            // await createPost(setTitle, setDescription, setPrice, setLocation, authToken);
             const authToken = localStorage.getItem("token");
             const response = await createPost(post, authToken)
             navigate("/User")
